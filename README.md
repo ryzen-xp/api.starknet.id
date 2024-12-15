@@ -114,7 +114,6 @@ We welcome contributions to the StarknetID API! To keep our workflow smooth, ple
    - Push to your branch
    - Create a Pull Request
 
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -13,25 +13,30 @@ StarknetID provides a robust interface for managing and querying StarkNet identi
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - Rust (latest stable version) [Rust Installation Guide](https://doc.rust-lang.org/book/ch01-01-installation.html)
 - Docker and Docker Compose [Docker Installation Guide](https://docs.docker.com/get-started/get-docker/)
 - Git [Git Installation Guide](https://git-scm.com/downloads)
 
 ## Installation
+
 1. Fork the repo
 
 2. Clone the forked repository:
+
 ```bash
 git clone git clone https://github.com/<your-user>/api.starknet.id.git
 cd api.starknet.id
 ```
 
 3. Create Branch
+
 ```bash
 git checkout -b fix-[issue-number]
 ```
 
 4. Build the project:
+
 ```bash
 cargo build
 ```
@@ -43,11 +48,38 @@ cargo build
    ```
    - Update the configuration with your specific settings
 
+## Database Setup
+
+### Using MongoDB Atlas (Recommended)
+
+1. Sign up for MongoDB Atlas:
+
+   - Visit MongoDB Atlas and create a free account(https://www.mongodb.com/products/platform/atlas-database).
+
+2. Create a Cluster
+
+3. Get Your Connection String:
+
+   - Navigate to your cluster and select "Connect".
+   - Choose "Connect to your application".
+   - Copy the provided connection string.
+
+4. Update `config.toml` File:
+
+   - Replace the placeholder value of connection_string with the connection string from MongoDB Atlas.
+   - Example:
+     [database]
+     connection_string = "mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority"
+
+5. Test Connection:
+   - Ensure your MongoDB Atlas setup is accessible by running the API and confirming database operations.
+
 ## Running the API
 
 ### Using Docker (Recommended)
 
 1. Build and start the containers:
+
 ```bash
 docker-compose up -d
 ```
@@ -55,11 +87,13 @@ docker-compose up -d
 ### Using Cargo
 
 1. Run in development mode:
+
 ```bash
 cargo run
 ```
 
 2. Run in production mode:
+
 ```bash
 cargo run --release
 ```
@@ -67,6 +101,7 @@ cargo run --release
 ## Configuration
 
 The API can be configured using the `config.toml` file. Key configuration options include:
+
 - Server settings
 - Database connections
 - StarkNet node configuration
@@ -77,19 +112,27 @@ The API can be configured using the `config.toml` file. Key configuration option
 ### Common Issues
 
 1. **Docker Build Fails**
+
    - Ensure Docker is running
    - Check if required ports are available
    - Verify Docker has sufficient resources
 
 2. **API Connection Issues**
+
    - Verify the configuration in config.toml
    - Check if the StarkNet node is accessible
    - Ensure all required environment variables are set
 
 3. **Compilation Errors**
+
    - Update Rust to the latest stable version
    - Clear cargo cache and rebuild
    - Check for missing dependencies
+
+4. **MongoDB Connection Issues**
+   - Ensure the connection_string in config.toml is correctly formatted.
+   - Verify your MongoDB Atlas cluster IP whitelist allows connections from your machine's IP.
+   - Ensure the username and password used in the connection string are correct.
 
 ## Contributing
 
@@ -102,6 +145,7 @@ We welcome contributions to the StarknetID API! To keep our workflow smooth, ple
 3. **Closing the Issue**: In your PR description, close the issue by writing `Close #[issue_id]`.
 
 4. **Review Process**:
+
    - Once you've submitted your PR, change the label to "ready for review".
    - If changes are requested, address them and then update the label back to "ready for review" once done.
 
@@ -113,7 +157,6 @@ We welcome contributions to the StarknetID API! To keep our workflow smooth, ple
    - Commit your changes
    - Push to your branch
    - Create a Pull Request
-
 
 ## License
 

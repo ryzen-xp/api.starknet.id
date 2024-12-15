@@ -3,7 +3,6 @@
 StarknetID provides a robust interface for managing and querying StarkNet identities, making it easier to integrate identity services into applications built on StarkNet.
 
 ## Features
-
 - Identity resolution and management
 - Domain name services
 - Secure API endpoints
